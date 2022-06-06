@@ -28,5 +28,20 @@ namespace KCU
             Console.Write(sb.ToString());
             if (goBackToStart) Console.SetCursorPosition(x, y);
         }
+
+        /// <summary>
+        /// WriteAt - Console.Write() but at given position (basically a wrapper)
+        /// </summary>
+        /// <param name="text">text to write</param>
+        /// <param name="returnToPos">should the cursor go back to where it was before running this method?</param>
+        public static void WriteAt(string text, int left, int top, bool returnToPos = false)
+        {
+            int befx = Console.CursorLeft,
+                befy = Console.CursorTop;
+
+            Console.SetCursorPosition(left, top);
+            Console.Write(text);
+            if (returnToPos) Console.SetCursorPosition(befx, befy);
+        }
     }
 }
