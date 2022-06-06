@@ -5,6 +5,8 @@ VisualStudioVersion = 17.3.32519.111
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "krecikthegame", "krecikthegame\krecikthegame.csproj", "{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krecik Console Utilities", "Krecik Console Utilities\Krecik Console Utilities.csproj", "{064F172B-B7B4-438A-9790-3540741B9629}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{064F172B-B7B4-438A-9790-3540741B9629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{064F172B-B7B4-438A-9790-3540741B9629}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{064F172B-B7B4-438A-9790-3540741B9629}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{064F172B-B7B4-438A-9790-3540741B9629}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
