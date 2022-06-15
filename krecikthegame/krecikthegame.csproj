@@ -7,4 +7,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Krecik Console Utilities\Krecik Console Utilities.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="UI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\" />
+  </ItemGroup>
 </Project>

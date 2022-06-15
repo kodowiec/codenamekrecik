@@ -21,8 +21,8 @@ namespace KCU
         {
             if (fromBeginning) Console.SetCursorPosition(0, Console.CursorTop);
             int x = Console.CursorLeft, y = Console.CursorTop;
+            int maxWidth = Console.WindowWidth - x - offsetStop;
             Console.SetCursorPosition(x+offsetStart, y);
-            int maxWidth = Console.BufferWidth - x - offsetStop;
             StringBuilder sb = new StringBuilder();
             sb.Append(Characters.whitespace, maxWidth);
             Console.Write(sb.ToString());
@@ -36,12 +36,13 @@ namespace KCU
         /// <param name="returnToPos">should the cursor go back to where it was before running this method?</param>
         public static void WriteAt(string text, int left, int top, bool returnToPos = false)
         {
-            int befx = Console.CursorLeft,
-                befy = Console.CursorTop;
+            int prevleft = Console.CursorLeft,
+                prevtop  = Console.CursorTop;
 
             Console.SetCursorPosition(left, top);
             Console.Write(text);
-            if (returnToPos) Console.SetCursorPosition(befx, befy);
+
+            if (returnToPos) Console.SetCursorPosition(prevleft, prevtop);
         }
     }
 }
