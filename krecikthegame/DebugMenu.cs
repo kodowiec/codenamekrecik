@@ -1,4 +1,5 @@
 ﻿using KCU;
+using System.Windows.Forms;
 
 namespace krecikthegame
 {
@@ -20,9 +21,57 @@ namespace krecikthegame
             Console.WriteLine("krecik debug menu ");
             Console.WriteLine("W - sprawdzanie wspolrzednych");
             Console.WriteLine("S - rysowanie ramek");
+            Console.WriteLine("F - zmien czcionke ");
+            Console.WriteLine("I - instaluj i zmien czcionke ");
+            Console.WriteLine("X - zmień rozmiar czcionki ");
+            Console.WriteLine("\n curr font: " + KCU.Fonts.GetFontName());
+
+            Size screenSize = new Size
+            {
+                Width = Screen.AllScreens.Sum(s => s.Bounds.Width),
+                Height = Screen.AllScreens.Max(s => s.Bounds.Height)
+            };
+
+            Console.WriteLine(String.Format(
+                "screen size (X*Y): {00}x{01} | console size: {02}x{03} | max console size: {04}x{05}", screenSize.Width, screenSize.Height, Console.WindowWidth, Console.WindowHeight, Console.LargestWindowWidth, Console.LargestWindowHeight));
+
 
             switch (Console.ReadKey().Key)
             {
+                case ConsoleKey.F:
+                    Console.Write("Podaj nazwe czcionki: ");
+                    string? fontname = Console.ReadLine();
+                    //KCU.Fonts.ChangeFont(fontname);
+                    KCU.Fonts.ChangeFont(fontname);
+                    Console.WriteLine("test nowej czcionki");
+                    Console.ReadKey();
+                    goto DebugMain;
+                    break;
+                case ConsoleKey.I:
+                    Console.WriteLine("assuming Mx437 IBM BIOS");
+                    Console.WriteLine(KCU.Fonts.InstallFont(Path.Combine(AppDomain.CurrentDomain.BaseDirectory ,"Resources", "font.ttf")));
+                    KCU.Fonts.ChangeFont("Mx437 IBM BIOS");
+                    Console.ReadKey();
+                    goto DebugMain;
+                    break;
+                case ConsoleKey.X:
+                    Console.Write("Podaj rozmiar: ");
+                    short a;
+                    try
+                    {
+                        a = (short) Int32.Parse(Console.ReadLine());
+                    }
+                    catch (Exception e)
+                    {
+                        goto DebugMain;
+                    }
+                    KCU.Fonts.SetFontSize(a, a);
+                    Console.WriteLine("test nowej czcionki"); Console.WriteLine(String.Format(
+                "screen size (X*Y): {00}x{01} | console size: {02}x{03} | max console size: {04}x{05}", screenSize.Width, screenSize.Height, Console.WindowWidth, Console.WindowHeight, Console.LargestWindowWidth, Console.LargestWindowHeight));
+
+                    Console.ReadKey();
+                    goto DebugMain;
+                    break;
                 case ConsoleKey.W:
                     DBGPseudoMovement(args);
                     break;
@@ -135,6 +184,12 @@ namespace krecikthegame
             Console.ForegroundColor = ConsoleColor.White;
 
 
+        }
+
+        private class Size
+        {
+            public int Width { get; set; }
+            public int Height { get; set; }
         }
     }
 }

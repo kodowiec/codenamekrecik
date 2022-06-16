@@ -10,10 +10,18 @@
   <ItemGroup>
     <ProjectReference Include="..\Krecik Console Utilities\Krecik Console Utilities.csproj" />
   </ItemGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.WindowsDesktop.App.WindowsForms" />
+	</ItemGroup>
   <ItemGroup>
     <None Remove="UI\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UI\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Resources\font.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
