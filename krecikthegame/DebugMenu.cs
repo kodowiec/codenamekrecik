@@ -33,7 +33,7 @@ namespace krecikthegame
             };
 
             Console.WriteLine(String.Format(
-                "screen size (X*Y): {00}x{01} | console size: {02}x{03} | max console size: {04}x{05}", screenSize.Width, screenSize.Height, Console.WindowWidth, Console.WindowHeight, Console.LargestWindowWidth, Console.LargestWindowHeight));
+                "screen size (X*Y): {00}x{01} | console size: {02}x{03} | max console size: {04}x{05} | curr font size: {06}", screenSize.Width, screenSize.Height, Console.WindowWidth, Console.WindowHeight, Console.LargestWindowWidth, Console.LargestWindowHeight, Fonts.GetFontSize()));
 
 
             switch (Console.ReadKey().Key)
@@ -47,6 +47,12 @@ namespace krecikthegame
                     Console.ReadKey();
                     goto DebugMain;
                     break;
+                 case ConsoleKey.Q:
+                    ConsoleMode.Maximize();
+                    System.Windows.Forms.SendKeys.SendWait("{F11}");
+                    short size = (short)((short) screenSize.Width / 75);
+                    Fonts.SetFontSize(size, size);
+                    goto DebugMain;
                 case ConsoleKey.I:
                     Console.WriteLine("assuming Mx437 IBM BIOS");
                     Console.WriteLine(KCU.Fonts.InstallFont(Path.Combine(AppDomain.CurrentDomain.BaseDirectory ,"Resources", "font.ttf")));

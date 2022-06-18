@@ -51,7 +51,7 @@ namespace KCU
         }
 
         [DllImport("kernel32.dll", SetLastError = true)]
-        static extern IntPtr GetStdHandle(int nStdHandle);
+        public static extern IntPtr GetStdHandle(int nStdHandle);
 
         [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         static extern bool GetCurrentConsoleFontEx(
@@ -125,6 +125,21 @@ namespace KCU
                     SetCurrentConsoleFontEx(hnd, false, ref newInfo);
                 }
             }
+        }
+
+        public static unsafe short? GetFontSize()
+        {
+            IntPtr hnd = GetStdHandle(STD_OUTPUT_HANDLE);
+            if (hnd != INVALID_HANDLE_VALUE)
+            {
+                CONSOLE_FONT_INFO_EX info = new CONSOLE_FONT_INFO_EX();
+                info.cbSize = (uint)Marshal.SizeOf(info);
+                if (GetCurrentConsoleFontEx(hnd, false, ref info))
+                {
+                    return info.dwFontSize.X;
+                }
+            }
+            return null;
         }
     }
 }
