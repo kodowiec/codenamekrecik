@@ -9,6 +9,32 @@ namespace krecikthegame
         static int prevy = 1;
         static int px = 1;
         static int py = 1;
+        
+        static Size closestScreenSize()
+        {
+            ConsoleMode.Maximize();
+            int closestWidth = (int) Fonts.GetFontSize() * Console.LargestWindowWidth;
+            Size ret = new Size();
+            Dictionary<int, Screen> abs = new Dictionary<int, Screen>();
+            foreach (var screen in Screen.AllScreens)
+            {
+                int a = Math.Abs(screen.Bounds.Width - closestWidth);
+                if (abs.ContainsKey(a))
+                {
+                    int closestHeight = (int)Fonts.GetFontSize(false) * Console.LargestWindowHeight;
+                    if (Math.Abs(screen.Bounds.Height - closestHeight) < Math.Abs(abs[a].Bounds.Height - closestHeight)) abs[a] = screen;
+                }
+                else abs.Add(a, screen);
+            }
+            int min = 2000;
+            foreach  (var item in abs)
+            {
+                if (item.Key < min) min = item.Key;
+            }
+            ret.Width = abs[min].Bounds.Width;
+            ret.Height = abs[min].Bounds.Height;
+            return ret;
+        }
 
         static void ShowDebugMenu(string[] args)
         {
@@ -26,11 +52,7 @@ namespace krecikthegame
             Console.WriteLine("X - zmień rozmiar czcionki ");
             Console.WriteLine("\n curr font: " + KCU.Fonts.GetFontName());
 
-            Size screenSize = new Size
-            {
-                Width = Screen.AllScreens.Sum(s => s.Bounds.Width),
-                Height = Screen.AllScreens.Max(s => s.Bounds.Height)
-            };
+            Size screenSize = closestScreenSize();
 
             Console.WriteLine(String.Format(
                 "screen size (X*Y): {00}x{01} | console size: {02}x{03} | max console size: {04}x{05} | curr font size: {06}", screenSize.Width, screenSize.Height, Console.WindowWidth, Console.WindowHeight, Console.LargestWindowWidth, Console.LargestWindowHeight, Fonts.GetFontSize()));

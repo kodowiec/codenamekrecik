@@ -127,7 +127,7 @@ namespace KCU
             }
         }
 
-        public static unsafe short? GetFontSize()
+        public static unsafe short? GetFontSize(bool x = true)
         {
             IntPtr hnd = GetStdHandle(STD_OUTPUT_HANDLE);
             if (hnd != INVALID_HANDLE_VALUE)
@@ -136,7 +136,7 @@ namespace KCU
                 info.cbSize = (uint)Marshal.SizeOf(info);
                 if (GetCurrentConsoleFontEx(hnd, false, ref info))
                 {
-                    return info.dwFontSize.X;
+                    return (x)? info.dwFontSize.X : info.dwFontSize.Y;
                 }
             }
             return null;
