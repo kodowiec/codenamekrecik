@@ -2,6 +2,7 @@
 {
     public class Characters
     {
+        public static readonly char player = '☺';
         public static readonly char whitespace = ' ';
 
         /// <summary>
