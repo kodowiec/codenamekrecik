@@ -75,6 +75,10 @@ namespace krecikthegame
                 case ConsoleKey.W:
                     DBGPseudoMovement(args);
                     break;
+                case ConsoleKey.M:
+                    UI.DrawMainMenu("menu", ConsoleColor.White, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.White);
+                    Console.ReadKey();
+                    break;
                 case ConsoleKey.S:
                 DebugDrawFrame:
                     Console.WriteLine();
