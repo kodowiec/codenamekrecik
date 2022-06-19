@@ -3,9 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32519.111
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "krecikthegame", "krecikthegame\krecikthegame.csproj", "{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "krecikthegame", "krecikthegame\krecikthegame.csproj", "{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krecik Console Utilities", "Krecik Console Utilities\Krecik Console Utilities.csproj", "{064F172B-B7B4-438A-9790-3540741B9629}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krecik Console Utilities", "Krecik Console Utilities\Krecik Console Utilities.csproj", "{064F172B-B7B4-438A-9790-3540741B9629}"
+EndProject
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

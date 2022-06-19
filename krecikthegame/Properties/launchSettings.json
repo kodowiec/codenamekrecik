@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "krecikthegame": {
+      "commandName": "Project"
+    },
+    "debug-fullscreen": {
+      "commandName": "Project",
+      "commandLineArgs": "--debug --fullscreen"
+    },
+    "debug-windowed": {
+      "commandName": "Project",
+      "commandLineArgs": "--debug --windowed"
+    }
+  }
+}
