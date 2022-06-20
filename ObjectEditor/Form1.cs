@@ -17,12 +17,23 @@ namespace ObjectEditor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            objectList = new List<MapObject>();
-            currentWorking = new MapObject() {  ID = 1, Display = "?" };
-           cmbDisplayColor.Items.Clear();
-           cmbDisplayColor.Items.AddRange(consoleColors);
+            cmbDisplayColor.Items.Clear();
+            cmbDisplayColor.Items.AddRange(consoleColors);
             cmbPrvCol.Items.Clear();
             cmbPrvCol.Items.AddRange(consoleColors);
+            if (File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "mapobjects.json")))
+                {
+
+                    string fileContent = File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "mapobjects.json"));
+                    objectList = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MapObject>>(fileContent);
+            }
+            else
+            {
+
+                objectList = new List<MapObject>();
+                currentWorking = new MapObject() { ID = 1, Display = "?" };
+            }
+            SetListBoxItems();
         }
 
         private void LoadToEdit()
@@ -121,6 +132,7 @@ namespace ObjectEditor
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.DefaultExt = ".json";
             saveFileDialog.Filter = "JSON files (*.json)|*.json";
+            saveFileDialog.InitialDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
             saveFileDialog.Title = "Save The Cave Map Objects list";
             saveFileDialog.FileName = "mapobjects";
             DialogResult result = saveFileDialog.ShowDialog();
@@ -161,6 +173,7 @@ namespace ObjectEditor
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Title = "Open The Cave Map Objects file";
             openFileDialog.FileName = "mapobjects";
+            openFileDialog.InitialDirectory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources");
             openFileDialog.DefaultExt = ".json";
             openFileDialog.Filter = "The Cave Map Objects JSON files (*.json)|*.json";
             DialogResult result = openFileDialog.ShowDialog();
