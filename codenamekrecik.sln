@@ -7,26 +7,50 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "krecikthegame", "kreciktheg
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Krecik Console Utilities", "Krecik Console Utilities\Krecik Console Utilities.csproj", "{064F172B-B7B4-438A-9790-3540741B9629}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectEditor", "ObjectEditor\ObjectEditor.csproj", "{F64DD040-03F1-4217-B0ED-919D9A59E378}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ObjectEditor", "ObjectEditor\ObjectEditor.csproj", "{F64DD040-03F1-4217-B0ED-919D9A59E378}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapEditor", "MapEditor\MapEditor.csproj", "{ADE53D1C-C995-4A09-8BDD-75157BE4C2FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
 		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}.Debug|x64.Build.0 = Debug|Any CPU
 		{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}.Release|x64.ActiveCfg = Release|Any CPU
+		{A8C63A0F-1834-4B00-9DEB-0C0211A38AC9}.Release|x64.Build.0 = Release|Any CPU
 		{064F172B-B7B4-438A-9790-3540741B9629}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{064F172B-B7B4-438A-9790-3540741B9629}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{064F172B-B7B4-438A-9790-3540741B9629}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{064F172B-B7B4-438A-9790-3540741B9629}.Debug|x64.Build.0 = Debug|Any CPU
 		{064F172B-B7B4-438A-9790-3540741B9629}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{064F172B-B7B4-438A-9790-3540741B9629}.Release|Any CPU.Build.0 = Release|Any CPU
+		{064F172B-B7B4-438A-9790-3540741B9629}.Release|x64.ActiveCfg = Release|Any CPU
+		{064F172B-B7B4-438A-9790-3540741B9629}.Release|x64.Build.0 = Release|Any CPU
 		{F64DD040-03F1-4217-B0ED-919D9A59E378}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F64DD040-03F1-4217-B0ED-919D9A59E378}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F64DD040-03F1-4217-B0ED-919D9A59E378}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F64DD040-03F1-4217-B0ED-919D9A59E378}.Debug|x64.Build.0 = Debug|Any CPU
 		{F64DD040-03F1-4217-B0ED-919D9A59E378}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F64DD040-03F1-4217-B0ED-919D9A59E378}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F64DD040-03F1-4217-B0ED-919D9A59E378}.Release|x64.ActiveCfg = Release|Any CPU
+		{F64DD040-03F1-4217-B0ED-919D9A59E378}.Release|x64.Build.0 = Release|Any CPU
+		{ADE53D1C-C995-4A09-8BDD-75157BE4C2FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADE53D1C-C995-4A09-8BDD-75157BE4C2FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADE53D1C-C995-4A09-8BDD-75157BE4C2FE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{ADE53D1C-C995-4A09-8BDD-75157BE4C2FE}.Debug|x64.Build.0 = Debug|Any CPU
+		{ADE53D1C-C995-4A09-8BDD-75157BE4C2FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADE53D1C-C995-4A09-8BDD-75157BE4C2FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADE53D1C-C995-4A09-8BDD-75157BE4C2FE}.Release|x64.ActiveCfg = Release|Any CPU
+		{ADE53D1C-C995-4A09-8BDD-75157BE4C2FE}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
