@@ -76,9 +76,9 @@ namespace krecikthegame
                     Fonts.SetFontSize(size, size);
                     goto DebugMain;
                 case ConsoleKey.I:
-                    Console.WriteLine("assuming Mx437 IBM BIOS");
+                    Console.WriteLine("assuming MxPlus IBM BIOS");
                     Console.WriteLine(KCU.Fonts.InstallFont(Path.Combine(AppDomain.CurrentDomain.BaseDirectory ,"Resources", "font.ttf")));
-                    KCU.Fonts.ChangeFont("Mx437 IBM BIOS");
+                    KCU.Fonts.ChangeFont("MxPlus IBM BIOS");
                     Console.ReadKey();
                     goto DebugMain;
                     break;
