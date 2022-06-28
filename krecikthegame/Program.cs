@@ -36,6 +36,7 @@
                 if (fir != "Font installed successfully.")
                 {
                     if (debug) Console.WriteLine(fir);
+                    System.Threading.Thread.Sleep(500);
                     goto FontInstall;
                 }
                 KCU.Fonts.ChangeFont("MxPlus IBM BIOS");
@@ -43,7 +44,10 @@
 
 
             KCU.Size screenSize = KCU.ScreenSize.GetClosestToCurrentScreenSize();
-            short size = (short)((short)Math.Round((decimal)screenSize.Width / 75, MidpointRounding.ToZero));
+            // this below is for width 75
+            // short size = (short)((short)Math.Round((decimal)screenSize.Width / 75, MidpointRounding.ToZero));
+            //for testing well stick with forced height isntead
+            short size = (short)((short)Math.Round((decimal)screenSize.Height / 44, MidpointRounding.ToZero));
 
             // fullscreen
             if (fullscreen) System.Windows.Forms.SendKeys.SendWait("{F11}");

@@ -6,149 +6,87 @@ using System.Threading.Tasks;
 
 namespace krecikthegame
 {
-    enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
-    class Bullet
-    {
-        public int startx;
-        public int starty;
-        public Direction direction;
-        public int x;
-        public int y;
-        public int distance;
-        public bool exists;
-
-        public Bullet(int startx, int starty, Direction direction, int distance)
-        {
-            this.startx = startx;
-            this.starty = starty;
-            this.x = startx;
-            this.y = starty;
-            this.direction = direction;
-            this.distance = distance;
-            this.exists = true;
-        }
-
-        public int DistanceDiffer()
-        {
-            int ret = 0;
-            if (direction == Direction.Up) ret = starty - y;
-            if (direction == Direction.Down) ret = y - starty;
-            if (direction == Direction.Left) ret = startx - x;
-            if (direction == Direction.Right) ret = x - startx;
-            return ret;
-        }
-
-        public bool ShouldExist()
-        {
-            if (DistanceDiffer() > distance) return false;
-            else return true;
-        }
-
-        public void Move()
-        {
-            if (!ShouldExist())
-            {
-                this.exists = false;
-                return; 
-            }
-            switch (direction)
-            {
-                case Direction.Up:
-                    y -= 1;
-                    break;
-                case Direction.Down:
-                    y += 1;
-                    break;
-                case Direction.Left:
-                    x -= 1;
-                    break;
-                case Direction.Right:
-                    x += 1;
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
     partial class Game
     {
-        private void MagicZappingTest()
+        private void FullRender()
         {
-            Console.BackgroundColor = ConsoleColor.Black;
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.CursorVisible = false;
             Console.Clear();
-            KCU.ConsoleToolkit.WriteAt("Select a direction to make a zap", 2, Console.WindowHeight - 2);
-            int playerx = 38;
-            int playery = 22;
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            KCU.ConsoleToolkit.WriteAt("☻", playerx, playery);
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            KCU.ConsoleToolkit.WriteAt("↑", playerx, playery - 1);
-            KCU.ConsoleToolkit.WriteAt("↓", playerx, playery + 1);
-            KCU.ConsoleToolkit.WriteAt("←", playerx - 1, playery);
-            KCU.ConsoleToolkit.WriteAt("→", playerx + 1, playery);
-
-            ConsoleKey read = Console.ReadKey().Key;
-                switch(read)
+            Console.BackgroundColor = ConsoleColor.Black;
+            for (int x = 0; x < _currentboard.Width; x++)
+            {
+                for (int y = 0; y < _currentboard.Height; y++)
                 {
-                    case ConsoleKey.UpArrow:
-                        Zap(Direction.Up, playerx, playery-1);
-                        break;
-                    case ConsoleKey.DownArrow:
-                        Zap(Direction.Down, playerx, playery+1);
-                        break;
-                    case ConsoleKey.LeftArrow:
-                        Zap(Direction.Left, playerx-1, playery);
-                        break;
-                    case ConsoleKey.RightArrow:
-                        Zap(Direction.Right, playerx+1, playery);
-                        break;
-                    default:
-                        break;
+                    if (_currentboard.PlayerX == x && _currentboard.PlayerY == y)
+                    {
+                        RenderPlayer();
+
+                    }
+                    else if (_currentboard.BoardObjects[x,y] != null)
+                    {
+                        Console.ForegroundColor = _currentboard.BoardObjects[x,y].DrawColor;
+                        KCU.ConsoleToolkit.WriteAt(_currentboard.BoardObjects[x, y].Display, x, y);
+                    }
+                    
                 }
-            MagicZappingTest();
-
+            }
         }
-
-        private void Zap(Direction dir, int x, int y)
-            {
-            Bullet? bullet = new Bullet(x, y, dir, 5);
-            while (bullet.exists)
-            {
-                Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                KCU.ConsoleToolkit.WriteAt(" ", bullet.x, bullet.y);
-                bullet.Move();
-                if(bullet.exists) KCU.ConsoleToolkit.WriteAt("◊", bullet.x, bullet.y);
-                else KCU.ConsoleToolkit.WriteAt(" ", bullet.x, bullet.y);
-                System.Threading.Thread.Sleep(50);
-            }
-            bullet = null;
-            }
-        public void Render()
+        public void Render(bool partial = true)
         {
             // draw interface
-            // 
-            //throw new NotImplementedException();
-
-            MapReader mr = new MapReader();
-            mr.ReadFile("image.png");
-            for (int x = 0; x < mr.lastwidth; x++)
+            if (!partial)
             {
-                for (int y = 0; y < mr.lastheight; y++)
+                Console.Clear();
+                if(!_currentboard.IsFogHere) FullRender();
+                RenderWithFog();
+                return;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Black;
+                KCU.ConsoleToolkit.WriteAt(KCU.Characters.whitespace.ToString(), _currentboard.prevPlayerX, _currentboard.prevPlayerY);
+                RenderWithFog();
+            }
+            
+        }
+
+        public void RenderWithFog()
+        {
+            for (int cx = -1; cx < 2; cx++)
+            {
+                for (int cy = -1; cy < 2 ; cy++)
                 {
-                    Console.BackgroundColor = mr.colors[x, y];
-                    Console.ForegroundColor = Console.BackgroundColor;
-                    //KCU.ConsoleToolkit.WriteAt(" ", x, y);
+                    int x = _currentboard.PlayerX + cx;
+                    int y = _currentboard.PlayerY + cy;
+                    if (_currentboard.PlayerX == x && _currentboard.PlayerY == y)
+                    {
+                        RenderPlayer();
+
+                    }
+
+                    else if (x < _currentboard.Width && y < _currentboard.Height && x >= 0 && y>= 0)
+                    {
+                        if (_currentboard.BoardObjects[x, y] != null)
+                        {
+                            Console.ForegroundColor = _currentboard.BoardObjects[x, y].DrawColor;
+                            KCU.ConsoleToolkit.WriteAt(_currentboard.BoardObjects[x, y].Display, x, y);
+                        }
+                        else
+                        {
+                            //if player has torch
+                            // Console.ForegroundColor = ConsoleColor.DarkYellow;
+                            // KCU.ConsoleToolkit.WriteAt("∙", x, y);
+
+                        }
+                    }
+
                 }
             }
-            Console.ReadKey();
+        }
+
+        public void RenderPlayer()
+        {
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            KCU.ConsoleToolkit.WriteAt(KCU.Characters.player.ToString(), _currentboard.PlayerX, _currentboard.PlayerY);
         }
     }
 }

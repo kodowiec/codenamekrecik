@@ -1,0 +1,182 @@
+[
+  {
+    "ID": 1,
+    "ColorID": "#965643",
+    "Name": "prawygorny",
+    "Display": "╗",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 8
+  },
+  {
+    "ID": 2,
+    "ColorID": "#601616",
+    "Name": "lewygorny",
+    "Display": "╔",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 8
+  },
+  {
+    "ID": 3,
+    "ColorID": "#B8B38D",
+    "Name": "prawydolny",
+    "Display": "╝",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 8
+  },
+  {
+    "ID": 4,
+    "ColorID": "#966B43",
+    "Name": "lewydolny",
+    "Display": "╚",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 8
+  },
+  {
+    "ID": 5,
+    "ColorID": "#3C522D",
+    "Name": "tlewe",
+    "Display": "╣",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 8
+  },
+  {
+    "ID": 6,
+    "ColorID": "#9FBD52",
+    "Name": "tprawe",
+    "Display": "╠",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 8
+  },
+  {
+    "ID": 7,
+    "ColorID": "#445E40",
+    "Name": "t",
+    "Display": "╦",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 8
+  },
+  {
+    "ID": 8,
+    "ColorID": "#34E551",
+    "Name": "todwrocone",
+    "Display": "╩",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 8
+  },
+  {
+    "ID": 9,
+    "ColorID": "#127463",
+    "Name": "pionowa",
+    "Display": "║",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 8
+  },
+  {
+    "ID": 10,
+    "ColorID": "#52B2C1",
+    "Name": "pozioma",
+    "Display": "═",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 8
+  },
+  {
+    "ID": 11,
+    "ColorID": "#957EB6",
+    "Name": "skrzynia1",
+    "Display": "⌂",
+    "IsInteractive": true,
+    "IsColliding": true,
+    "DrawColor": 14
+  },
+  {
+    "ID": 12,
+    "ColorID": "#3F0C4F",
+    "Name": "skrzynia2",
+    "Display": "۩",
+    "IsInteractive": true,
+    "IsColliding": true,
+    "DrawColor": 14
+  },
+  {
+    "ID": 13,
+    "ColorID": "#560D30",
+    "Name": "drzwi1",
+    "Display": "∩",
+    "IsInteractive": false,
+    "IsColliding": false,
+    "DrawColor": 0
+  },
+  {
+    "ID": 14,
+    "ColorID": "#3E6D92",
+    "Name": "drzwi2",
+    "Display": "∏",
+    "IsInteractive": false,
+    "IsColliding": false,
+    "DrawColor": 0
+  },
+  {
+    "ID": 15,
+    "ColorID": "#332294",
+    "Name": "oknoprawe",
+    "Display": "▌",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 11
+  },
+  {
+    "ID": 16,
+    "ColorID": "#827E9C",
+    "Name": "oknolewe",
+    "Display": "▐",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 11
+  },
+  {
+    "ID": 17,
+    "ColorID": "#160512",
+    "Name": "pulki",
+    "Display": "Ξ",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 0
+  },
+  {
+    "ID": 18,
+    "ColorID": "#7E5373",
+    "Name": "truskawa",
+    "Display": "ѽ",
+    "IsInteractive": true,
+    "IsColliding": false,
+    "DrawColor": 12
+  },
+  {
+    "ID": 19,
+    "ColorID": "#535353",
+    "Name": "skala",
+    "Display": ",",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 7
+  },
+  {
+    "ID": 20,
+    "ColorID": "#164E0E",
+    "Name": "drzewo",
+    "Display": ".",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 10
+  }
+]
