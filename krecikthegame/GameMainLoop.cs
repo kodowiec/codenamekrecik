@@ -90,6 +90,14 @@ namespace krecikthegame
                     case (int)ConsoleKey.M:
                         MagicZappingTest();
                         break;
+                    case (int)ConsoleKey.F:
+                        _currentboard.IsFogHere = !_currentboard.IsFogHere;
+                        Render(false);
+                        break;
+                    case (int)ConsoleKey.L:
+                        _currentboard.FlashlightTurnedOn = !_currentboard.FlashlightTurnedOn;
+                        Render(false);
+                        break;
                     case (int)ConsoleKey.R:
                         Render();
                         break;

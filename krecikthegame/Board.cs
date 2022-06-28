@@ -10,6 +10,7 @@ namespace krecikthegame
         public MapReader reader;
 
         public bool IsFogHere = false;
+        public bool FlashlightTurnedOn = false;
 
         public int PlayerX = 10;
         public int prevPlayerX;

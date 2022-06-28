@@ -60,7 +60,6 @@ namespace krecikthegame
                     if (_currentboard.PlayerX == x && _currentboard.PlayerY == y)
                     {
                         RenderPlayer();
-
                     }
 
                     else if (x < _currentboard.Width && y < _currentboard.Height && x >= 0 && y>= 0)
@@ -73,8 +72,13 @@ namespace krecikthegame
                         else
                         {
                             //if player has torch
-                            // Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            // KCU.ConsoleToolkit.WriteAt("∙", x, y);
+                            if(_currentboard.FlashlightTurnedOn)
+                            {
+                                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                                KCU.ConsoleToolkit.WriteAt("∙", x, y);
+                            }
+                            // 
+                            // 
 
                         }
                     }

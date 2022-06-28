@@ -47,7 +47,7 @@
             // this below is for width 75
             // short size = (short)((short)Math.Round((decimal)screenSize.Width / 75, MidpointRounding.ToZero));
             //for testing well stick with forced height isntead
-            short size = (short)((short)Math.Round((decimal)screenSize.Height / 44, MidpointRounding.ToZero));
+            short size = (short)((short)Math.Round((decimal)screenSize.Height / 43, MidpointRounding.ToZero));
 
             // fullscreen
             if (fullscreen) System.Windows.Forms.SendKeys.SendWait("{F11}");
