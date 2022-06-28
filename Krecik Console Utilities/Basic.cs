@@ -44,5 +44,11 @@ namespace KCU
 
             if (returnToPos) Console.SetCursorPosition(prevleft, prevtop);
         }
+
+        public static void WriteAt(string text, int left, int top, ConsoleColor color, bool returnToPos = false)
+        {
+            Console.ForegroundColor = color;
+            WriteAt(text, left, top, returnToPos);
+        }
     }
 }

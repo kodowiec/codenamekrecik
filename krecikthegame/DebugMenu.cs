@@ -9,34 +9,8 @@ namespace krecikthegame
         static int prevy = 1;
         static int px = 1;
         static int py = 1;
-        
-        static Size closestScreenSize()
-        {
-            ConsoleMode.Maximize();
-            int closestWidth = (int) Fonts.GetFontSize() * Console.LargestWindowWidth;
-            Size ret = new Size();
-            Dictionary<int, Screen> abs = new Dictionary<int, Screen>();
-            foreach (var screen in Screen.AllScreens)
-            {
-                int a = Math.Abs(screen.Bounds.Width - closestWidth);
-                if (abs.ContainsKey(a))
-                {
-                    int closestHeight = (int)Fonts.GetFontSize(false) * Console.LargestWindowHeight;
-                    if (Math.Abs(screen.Bounds.Height - closestHeight) < Math.Abs(abs[a].Bounds.Height - closestHeight)) abs[a] = screen;
-                }
-                else abs.Add(a, screen);
-            }
-            int min = 2000;
-            foreach  (var item in abs)
-            {
-                if (item.Key < min) min = item.Key;
-            }
-            ret.Width = abs[min].Bounds.Width;
-            ret.Height = abs[min].Bounds.Height;
-            return ret;
-        }
 
-        static void ShowDebugMenu(string[] args)
+        public static void ShowDebugMenu()
         {
         DebugMain:
             Console.ForegroundColor = ConsoleColor.White;
@@ -52,7 +26,7 @@ namespace krecikthegame
             Console.WriteLine("X - zmień rozmiar czcionki ");
             Console.WriteLine("\n curr font: " + KCU.Fonts.GetFontName());
 
-            Size screenSize = closestScreenSize();
+            Size screenSize = ScreenSize.GetClosestToCurrentScreenSize();
 
             Console.WriteLine(String.Format(
                 "screen size (X*Y): {00}x{01} | console size: {02}x{03} | max console size: {04}x{05} | curr font size: {06}", screenSize.Width, screenSize.Height, Console.WindowWidth, Console.WindowHeight, Console.LargestWindowWidth, Console.LargestWindowHeight, Fonts.GetFontSize()));
@@ -101,7 +75,7 @@ namespace krecikthegame
                     goto DebugMain;
                     break;
                 case ConsoleKey.W:
-                    DBGPseudoMovement(args);
+                    DBGPseudoMovement();
                     break;
                 case ConsoleKey.M:
                     UI.DrawMainMenu(ConsoleColor.White, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.White);
@@ -140,11 +114,15 @@ namespace krecikthegame
                     }
                     break;
                 default:
+                    string[] argx = new string[2];
+                    argx[0] = "--debug";
+                    argx[1] = "--fullscreen";
+                    Program.Main(argx);
                     break;
             }
         }
 
-        static void DBGPseudoMovement(string[] args)
+        static void DBGPseudoMovement()
         {
             Console.CursorVisible = false;
             Console.Clear();
@@ -182,7 +160,7 @@ namespace krecikthegame
                 }
                 catch (Exception e)
                 {
-                    Main(args);
+                    ShowDebugMenu();
                 }
             }
         }
@@ -216,12 +194,6 @@ namespace krecikthegame
             Console.ForegroundColor = ConsoleColor.White;
 
 
-        }
-
-        private class Size
-        {
-            public int Width { get; set; }
-            public int Height { get; set; }
         }
     }
 }
