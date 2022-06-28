@@ -30,7 +30,7 @@ namespace krecikthegame
 
             menuButtons.Add(new TextButton("zagraj", () => { StartGame(); return 1; }, 5, 18, buttonStyle));
             menuButtons[0].IsFocused = true;
-            menuButtons.Add(new TextButton("opcje", () => { GoToOptions(); return 2; }, 5, 20, buttonStyle));
+            menuButtons.Add(new TextButton("opcje", () => { GoToOptions(); this.Run(); return 2; }, 5, 20, buttonStyle));
             menuButtons.Add(new TextButton("wyjdź", () => { Environment.Exit(0); return 0; }, 5, 22, buttonStyle));
 
 
@@ -51,14 +51,11 @@ namespace krecikthegame
             MainMenuLoop();
         }
 
-        private void StartGame()
-        {
-            game.Run();
-        }
+        private void StartGame() => game.Run();
 
         private void GoToOptions()
         {
-
+            if (SettingsScreen.InitSettings(ref this.game.settings) == 1) this.game.settingsManager.WriteSettings(ref this.game.settings);
         }
 
         private void MainMenuLoop()

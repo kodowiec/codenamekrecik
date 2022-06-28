@@ -33,6 +33,8 @@ namespace KCU
         /// WriteAt - Console.Write() but at given position (basically a wrapper)
         /// </summary>
         /// <param name="text">text to write</param>
+        /// <param name="left">cursor left starting point</param>
+        /// <param name="top">cursor top starting point</param>
         /// <param name="returnToPos">should the cursor go back to where it was before running this method?</param>
         public static void WriteAt(string text, int left, int top, bool returnToPos = false)
         {
@@ -45,10 +47,37 @@ namespace KCU
             if (returnToPos) Console.SetCursorPosition(prevleft, prevtop);
         }
 
+
+        /// <summary>
+        /// WriteAt - Console.Write() but at given position (basically a wrapper)
+        /// </summary>
+        /// <param name="text">text to write</param>
+        /// <param name="left">cursor left starting point</param>
+        /// <param name="top">cursor top starting point</param>
+        /// <param name="returnToPos">should the cursor go back to where it was before running this method?</param>
+        /// <param name="color">write text color</param>
         public static void WriteAt(string text, int left, int top, ConsoleColor color, bool returnToPos = false)
         {
+            ConsoleColor prevcol = Console.ForegroundColor;
             Console.ForegroundColor = color;
             WriteAt(text, left, top, returnToPos);
+            Console.ForegroundColor = prevcol;
         }
+
+        /// <summary>
+        /// Write some empty characters (aka clear the space)
+        /// </summary>
+        /// <param name="length">length of whitespaces</param>
+        /// <param name="left">consoel left starting point</param>
+        /// <param name="top">console top starting point</param>
+        public static void ClearCharacters(int length, int left = -1, int top = -1)
+        {
+            int x = (left > 0) ? left : Console.CursorLeft, y = (top > 0) ? top : Console.CursorTop;
+            Console.SetCursorPosition(x, y);
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Characters.whitespace, length);
+            Console.Write(sb.ToString());
+        }
+
     }
 }

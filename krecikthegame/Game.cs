@@ -10,11 +10,14 @@ namespace krecikthegame
     {
         private object _player;
         private object _gameboard;
-        private object _settings;
- 
 
+        public UserSettings settings;
+        public SettingsManager settingsManager;
+ 
         public Game() 
         {
+            settings = new UserSettings();
+            SettingsManager settingsManager = new SettingsManager(ref settings, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "UserSettings.json"));
             Init();
         }
 

@@ -13,24 +13,24 @@ namespace krecikthegame
             while(true)
             {
                 ConsoleKey pressed = Console.ReadKey().Key;
-                switch (pressed)
+                switch ((int) pressed)
                 {
-                    case ConsoleKey.UpArrow: //replace with settings mapping
-                        // player->move
+                    case var value when value == settings.keymappings.MoveUp:
+                        // player->move up
                         break;
-                    case ConsoleKey.DownArrow: //replace with settings mapping
-                        // player->move
+                    case var value when value == settings.keymappings.MoveDown:
+                        // player->move down
                         break;
-                    case ConsoleKey.LeftArrow: //replace with settings mapping
-                        // player->move
+                    case var value when value == settings.keymappings.MoveLeft:
+                        // player->move left
                         break;
-                    case ConsoleKey.RightArrow: //replace with settings mapping
-                        // player->move
+                    case var value when value == settings.keymappings.MoveRight:
+                        // player->move right
                         break;
-                    case ConsoleKey.M:
+                    case (int)ConsoleKey.M:
                         MagicZappingTest();
                         break;
-                    case ConsoleKey.R:
+                    case (int)ConsoleKey.R:
                         Render();
                         break;
                     default:

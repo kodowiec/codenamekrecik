@@ -34,6 +34,11 @@ namespace krecikthegame.UIComponents
             set => _isFocused = value;
         }
 
+        public int Width
+        {
+            get => this._text.Length;
+        }
+
         public void Draw()
         {
             ConsoleColor prevBG = Console.BackgroundColor;
