@@ -13,7 +13,7 @@ namespace krecikthegame
             ConsoleColor prevFG = Console.ForegroundColor;
             ConsoleColor prevBG = Console.BackgroundColor;
             Console.BackgroundColor = backgroundColor;
-            Console.Clear();
+            //Console.Clear();
             DrawFrame(Console.WindowWidth - 2, Console.WindowHeight - 2, frameColor, backgroundColor, 1, 1);
             Console.ForegroundColor = prevFG;
             Console.BackgroundColor = prevBG;
@@ -47,7 +47,6 @@ namespace krecikthegame
             WriteAt("zebrales cos", 3, Console.WindowHeight - 4);
             Console.ForegroundColor = plotTextColor;
             WriteAt("Babcia: (...)", 3, Console.WindowHeight - 5);
-            Console.ReadKey();
         }
     }
 }

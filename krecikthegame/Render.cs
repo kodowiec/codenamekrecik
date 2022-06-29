@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace krecikthegame
 {
-    partial class Game
+    partial class Game 
     {
         private void FullRender()
         {
@@ -46,7 +46,7 @@ namespace krecikthegame
                 KCU.ConsoleToolkit.WriteAt(KCU.Characters.whitespace.ToString(), _currentboard.prevPlayerX, _currentboard.prevPlayerY);
                 RenderWithFog();
             }
-            
+            UI.DrawInterface(ConsoleColor.White, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Gray);
         }
 
         public void RenderWithFog()
