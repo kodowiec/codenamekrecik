@@ -82,6 +82,10 @@ namespace krecikthegame
                     UI.DrawMainMenu(ConsoleColor.White, ConsoleColor.Black, ConsoleColor.Red, ConsoleColor.White);
                     Console.ReadKey();
                     break;
+                case ConsoleKey.N:
+                    UI.DrawInterface(ConsoleColor.White, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Gray);
+                    Console.ReadKey();
+                    break;
                 case ConsoleKey.S:
                 DebugDrawFrame:
                     Console.WriteLine();
