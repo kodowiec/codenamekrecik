@@ -16,6 +16,8 @@ namespace krecikthegame
         public UserSettings settings;
         public SettingsManager settingsManager;
         public List<MapObject> mapObjects;
+
+        private bool showHUD = true;
  
         public Game() => Init();
         

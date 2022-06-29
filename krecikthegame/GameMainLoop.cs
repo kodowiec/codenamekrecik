@@ -87,6 +87,11 @@ namespace krecikthegame
                         // player->move right
                         MovePlayer(Direction.Right);
                         break;
+                    case var value when value == settings.keymappings.HideHUD:
+                        // player->move right
+                        this.showHUD =! this.showHUD;
+                        Render(false);
+                        break;
                     case (int)ConsoleKey.M:
                         MagicZappingTest();
                         break;

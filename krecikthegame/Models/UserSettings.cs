@@ -15,6 +15,7 @@ namespace krecikthegame
         public int MoveLeft = (int)ConsoleKey.LeftArrow;
         public int MoveRight = (int)ConsoleKey.RightArrow;
         public int Inventory = (int)ConsoleKey.E;
+        public int HideHUD = (int)ConsoleKey.H;
 
         // if we want to make interactions independent of move actions
         public int Interact = (int)ConsoleKey.Enter;
@@ -38,6 +39,8 @@ namespace krecikthegame
                     return this.Interact;
                 case KeyboardSettings.Attack:
                     return this.Attack;
+                case KeyboardSettings.HideHUD:
+                    return this.HideHUD;
                     break;
                 default:
                     return -1;
@@ -69,6 +72,9 @@ namespace krecikthegame
                 case KeyboardSettings.Attack:
                     this.Attack = value;
                     break;
+                case KeyboardSettings.HideHUD:
+                    this.HideHUD = value;
+                    break;
                 default:
                     break;
             }
@@ -98,6 +104,8 @@ namespace krecikthegame
                     return "Interact";
                 case KeyboardSettings.Attack:
                     return "Attack";
+                case KeyboardSettings.HideHUD:
+                    return "Hide HUD";
                 default:
                     return String.Empty;
             }

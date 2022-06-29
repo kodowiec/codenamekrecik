@@ -8,6 +8,7 @@
         MoveRight,
         Inventory,
         Interact,
-        Attack
+        Attack,
+        HideHUD
     }
 }
