@@ -10,13 +10,13 @@ namespace krecikthegame
     { 
     public static void DrawInterface(ConsoleColor frameColor, ConsoleColor backgroundColor, ConsoleColor plotTextColor, ConsoleColor missionText, ConsoleColor textColo)
         {
-            ConsoleColor prevFG = Console.ForegroundColor;
-            ConsoleColor prevBG = Console.BackgroundColor;
+            //ConsoleColor prevFG = Console.ForegroundColor;
+            //ConsoleColor prevBG = Console.BackgroundColor;
             Console.BackgroundColor = backgroundColor;
             //Console.Clear();
             DrawFrame(Console.WindowWidth - 2, Console.WindowHeight - 2, frameColor, backgroundColor, 1, 1);
-            Console.ForegroundColor = prevFG;
-            Console.BackgroundColor = prevBG;
+            Console.ForegroundColor = frameColor;
+            //Console.BackgroundColor = prevBG;
             WriteAt("╔", Console.WindowWidth - 13, Console.WindowHeight - 14);
             for (int i = 0; i < 10; i++)
             {
@@ -37,8 +37,8 @@ namespace krecikthegame
             WriteAt("6.#", Console.WindowWidth - 12, Console.WindowHeight - 5);
             WriteAt("7.#", Console.WindowWidth - 12, Console.WindowHeight - 4);
             Console.ForegroundColor = missionText;
-            WriteAt("AKTUALNY CEL MISJI:", 3, 3);
-            WriteAt("#", 3, 4);
+            WriteAt("AKTUALNY CEL MISJI:", 3, 0);
+            WriteAt("#", 23, 0);
             Console.ForegroundColor = frameColor;
             WriteAt("ZDROWIE:", Console.WindowWidth - 17, 3);
             Console.ForegroundColor = ConsoleColor.Red;
