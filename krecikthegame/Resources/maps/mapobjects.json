@@ -6,7 +6,7 @@
     "Display": "╗",
     "IsInteractive": false,
     "IsColliding": true,
-    "DrawColor": 8
+    "DrawColor": 7
   },
   {
     "ID": 2,
@@ -15,7 +15,7 @@
     "Display": "╔",
     "IsInteractive": false,
     "IsColliding": true,
-    "DrawColor": 8
+    "DrawColor": 7
   },
   {
     "ID": 3,
@@ -24,7 +24,7 @@
     "Display": "╝",
     "IsInteractive": false,
     "IsColliding": true,
-    "DrawColor": 8
+    "DrawColor": 7
   },
   {
     "ID": 4,
@@ -33,7 +33,7 @@
     "Display": "╚",
     "IsInteractive": false,
     "IsColliding": true,
-    "DrawColor": 8
+    "DrawColor": 7
   },
   {
     "ID": 5,
@@ -42,7 +42,7 @@
     "Display": "╣",
     "IsInteractive": false,
     "IsColliding": true,
-    "DrawColor": 8
+    "DrawColor": 7
   },
   {
     "ID": 6,
@@ -51,7 +51,7 @@
     "Display": "╠",
     "IsInteractive": false,
     "IsColliding": true,
-    "DrawColor": 8
+    "DrawColor": 7
   },
   {
     "ID": 7,
@@ -60,7 +60,7 @@
     "Display": "╦",
     "IsInteractive": false,
     "IsColliding": true,
-    "DrawColor": 8
+    "DrawColor": 7
   },
   {
     "ID": 8,
@@ -69,7 +69,7 @@
     "Display": "╩",
     "IsInteractive": false,
     "IsColliding": true,
-    "DrawColor": 8
+    "DrawColor": 7
   },
   {
     "ID": 9,
@@ -78,7 +78,7 @@
     "Display": "║",
     "IsInteractive": false,
     "IsColliding": true,
-    "DrawColor": 8
+    "DrawColor": 7
   },
   {
     "ID": 10,
@@ -87,7 +87,7 @@
     "Display": "═",
     "IsInteractive": false,
     "IsColliding": true,
-    "DrawColor": 8
+    "DrawColor": 7
   },
   {
     "ID": 11,
@@ -114,7 +114,7 @@
     "Display": "∩",
     "IsInteractive": false,
     "IsColliding": false,
-    "DrawColor": 0
+    "DrawColor": 1
   },
   {
     "ID": 14,
@@ -123,7 +123,7 @@
     "Display": "∏",
     "IsInteractive": false,
     "IsColliding": false,
-    "DrawColor": 0
+    "DrawColor": 1
   },
   {
     "ID": 15,
@@ -150,7 +150,7 @@
     "Display": "Ξ",
     "IsInteractive": false,
     "IsColliding": true,
-    "DrawColor": 0
+    "DrawColor": 3
   },
   {
     "ID": 18,
