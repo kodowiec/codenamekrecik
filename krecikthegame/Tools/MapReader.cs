@@ -18,7 +18,7 @@ namespace krecikthegame
         {
             List<MapObject> objects = ObjectLoader.mapObjects("mapobjects.json");
             Console.ForegroundColor = ConsoleColor.Green;
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", filename);
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "maps", filename);
             Bitmap img = new Bitmap(path);
             chars = new string[img.Width, img.Height];
             colors = new ConsoleColor[img.Width, img.Height];

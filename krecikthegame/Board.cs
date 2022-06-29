@@ -23,7 +23,7 @@ namespace krecikthegame
         public Board(string levelname)
         {
             reader = new MapReader();
-            reader.ReadFile("maps/" + levelname);
+            reader.ReadFile(levelname);
             this.BoardObjects = reader.mo;
             this.Width = reader.lastwidth;
             this.Height = reader.lastheight;
