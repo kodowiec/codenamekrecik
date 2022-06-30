@@ -86,7 +86,7 @@ namespace krecikthegame
                     if (levelname == trigger.levelname)
                     {
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        KCU.ConsoleToolkit.WriteAt("#", trigger.x, trigger.y);
+                        KCU.ConsoleToolkit.WriteAt(trigger.character, trigger.x, trigger.y);
                     }
                     });
             }
