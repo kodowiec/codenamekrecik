@@ -67,6 +67,7 @@ namespace krecikthegame
             while (true)
             {
                 Console.CursorVisible = false;
+                Console.SetCursorPosition(0, 0);
                 Console.ForegroundColor = Console.BackgroundColor;
                 ConsoleKey pressed = Console.ReadKey().Key;
                 switch ((int)pressed)
