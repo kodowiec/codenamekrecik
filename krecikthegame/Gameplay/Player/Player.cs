@@ -1,4 +1,5 @@
-﻿namespace Gameplay
+﻿using Gameplay.Quests;
+namespace Gameplay
 {
     class Player
     {

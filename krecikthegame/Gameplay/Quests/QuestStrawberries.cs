@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Gameplay
+namespace Gameplay.Quests
 {
     class QuestStrawberries: Quest
     {
@@ -8,6 +8,7 @@ namespace Gameplay
         {
             Title = "Wnusiu idź nazbieraj truskawek na kompot";
             Description = String.Format("Zbierz {0} truskawek dla babci", Amount);
+            Goal = Description;
         }
 
         public override global::System.Boolean IsCompleted()

@@ -1,4 +1,4 @@
-﻿namespace Gameplay
+﻿namespace Gameplay.Quests
 {
     class QuestBoss : Quest
     {
@@ -6,6 +6,7 @@
         {
             Title = "Pan Puszek";
             Description = "Pokonaj Pana Puszka aby zdobyć skarb.";
+            Goal = "Pokonaj Pana Puszka";
         }
 
         public override bool IsCompleted()

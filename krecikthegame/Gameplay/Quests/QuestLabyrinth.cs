@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Gameplay
+namespace Gameplay.Quests
 {
     class QuestLabyrinth : Quest
     {
@@ -7,6 +7,7 @@ namespace Gameplay
         {
             Title = "Labirynt";
             Description = "Znajdź drogę do wyjścia.";
+            Goal = Description;
         }
 
         public override bool IsCompleted()
