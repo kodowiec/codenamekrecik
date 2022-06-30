@@ -63,7 +63,9 @@ namespace krecikthegame
 
         private void GoToOptions()
         {
-            if (SettingsScreen.InitSettings(ref this.game.settings) == 1) this.game.settingsManager.WriteSettings(ref this.game.settings);
+            int re = SettingsScreen.InitSettings(ref this.game.settings);
+            if (re == 1)
+                this.game.settingsManager.WriteSettings(ref this.game.settings);
         }
 
         private void MainMenuLoop()

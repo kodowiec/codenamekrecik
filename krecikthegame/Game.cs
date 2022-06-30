@@ -31,8 +31,9 @@ namespace krecikthegame
 
         private void Init ()
         {
-            settings = new UserSettings();
-            SettingsManager settingsManager = new SettingsManager(ref settings, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "UserSettings.json"));
+            this.settings = new UserSettings();
+            this.settingsManager = new SettingsManager(ref settings, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "UserSettings.json"));
+            settingsManager.ReadSettings(out this.settings);
             mapObjects = ObjectLoader.mapObjects("mapobjects.json");
 
             boards = new List<Board>();
