@@ -6,7 +6,10 @@ namespace krecikthegame
     {
         public static void Show()
         {
+            Console.BackgroundColor = ConsoleColor.Black;
+            
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Blue;
             WriteAt("Wow,", 3, 3);
             Sleep(1500);
             WriteAt("Udało Ci się wyjść z labiryntu!", 3, 5);
