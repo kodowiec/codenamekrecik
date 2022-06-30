@@ -40,6 +40,17 @@ namespace Gameplay
 
         public int Count => Items.Count;
 
+        public int CountOfType(ItemType itemType)
+        {
+            int count = 0;
+            Items.ForEach(item =>
+            {
+                if (item.Type == itemType) count = item.Count;
+            });
+            return count;
+        }
+
+
         public Item GetAt(int index)
         {
             if (index < 0 || index >= Items.Count)

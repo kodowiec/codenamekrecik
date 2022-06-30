@@ -17,7 +17,7 @@ namespace krecikthegame
                 case Direction.Up:
                     newx = _currentboard.PlayerX;
                     newy = _currentboard.PlayerY - 1;
-                    if (newx >= 0 && newy >= 0 && newx < _currentboard.Width && newy < _currentboard.Height && !_currentboard.IsCollidable(newx, newy))
+                    if (newx >= 0 && newy >= 0 && newx < _currentboard.Width && newy < _currentboard.Height && !_currentboard.IsCollidable(newx, newy) && _currentboard.NPCs.Find(npc => npc.x == newx && npc.y == newy) == null  )
                     {
                         _currentboard.prevPlayerX = _currentboard.PlayerX;
                         _currentboard.prevPlayerY = _currentboard.PlayerY;
@@ -27,7 +27,7 @@ namespace krecikthegame
                 case Direction.Down:
                     newx = _currentboard.PlayerX;
                     newy = _currentboard.PlayerY + 1;
-                    if (newx >= 0 && newy >= 0 && newx < _currentboard.Width && newy < _currentboard.Height && !_currentboard.IsCollidable(newx, newy))
+                    if (newx >= 0 && newy >= 0 && newx < _currentboard.Width && newy < _currentboard.Height && !_currentboard.IsCollidable(newx, newy) && _currentboard.NPCs.Find(npc => npc.x == newx && npc.y == newy) == null)
                     {
 
                         _currentboard.prevPlayerX = _currentboard.PlayerX;
@@ -38,7 +38,7 @@ namespace krecikthegame
                 case Direction.Left:
                     newx = _currentboard.PlayerX - 1;
                     newy = _currentboard.PlayerY;
-                    if (newx >= 0 && newy >= 0 && newx < _currentboard.Width && newy < _currentboard.Height && !_currentboard.IsCollidable(newx, newy))
+                    if (newx >= 0 && newy >= 0 && newx < _currentboard.Width && newy < _currentboard.Height && !_currentboard.IsCollidable(newx, newy) && _currentboard.NPCs.Find(npc => npc.x == newx && npc.y == newy) == null)
                     {
 
                         _currentboard.prevPlayerX = _currentboard.PlayerX;
@@ -49,7 +49,7 @@ namespace krecikthegame
                 case Direction.Right:
                     newx = _currentboard.PlayerX + 1;
                     newy = _currentboard.PlayerY;
-                    if (newx >= 0 && newy >= 0 && newx < _currentboard.Width && newy < _currentboard.Height && !_currentboard.IsCollidable(newx, newy))
+                    if (newx >= 0 && newy >= 0 && newx < _currentboard.Width && newy < _currentboard.Height && !_currentboard.IsCollidable(newx, newy) && _currentboard.NPCs.Find(npc => npc.x == newx && npc.y == newy) == null)
                     {
                         _currentboard.prevPlayerX = _currentboard.PlayerX;
                         _currentboard.prevPlayerY = _currentboard.PlayerY;
@@ -97,20 +97,66 @@ namespace krecikthegame
                         this.showInventory = !this.showInventory;
                         Render(false);
                         break;
-
+                    case var value when value == settings.keymappings.Interact:
+                        {
+                            bool interacted = false;
+                            bool npcinteracted = false;
+                            for (int i = -1; i < 2; i++)
+                            {
+                                if (!interacted)
+                                for (int j = -1; j < 2; j++)
+                                { 
+                                    if (!interacted)
+                                        {
+                                            int x = _currentboard.PlayerX + i;
+                                            int y = _currentboard.PlayerY + j;
+                                            if (_currentboard.GetObject(x, y) != null && _currentboard.GetObject(x, y).Name == "truskawa")
+                                            {
+                                                _currentboard.BoardObjects[x, y] = null;
+                                                Gameplay.GameplayStatics.Player.EQ.AddItem(new Gameplay.Items.Strawberry());
+                                                lastAction = "zebrałeś 1 truskawkę";
+                                                interacted = true;
+                                            }
+                                            else
+                                            {
+                                                try
+                                                {
+                                                    if (_currentboard.NPCs.Find(npc => npc.x == x && npc.y == y) != null)
+                                                    {
+                                                        _currentboard.NPCs.Find(npc => npc.x == x && npc.y == y)?.Interact();
+                                                        lastAction = "wszedłeś w interakcję z " + _currentboard.NPCs.Find(npc => npc.x == x && npc.y == y).Name ;
+                                                        
+                                                        interacted = true;
+                                                        npcinteracted = true;
+                                                    }
+                                                }
+                                                catch { }
+                                            }
+                                        }
+                                }
+                            }
+                            if (interacted) Update(!npcinteracted);
+                        }
+                        break;
                     case (int)ConsoleKey.M:
-                        MagicZappingTest();
+                         if(debugMode) MagicZappingTest();
                         break;
                     case (int)ConsoleKey.F:
+                        if (debugMode)
+                        {
                         _currentboard.IsFogHere = !_currentboard.IsFogHere;
                         Render(false);
+                        }
                         break;
                     case (int)ConsoleKey.L:
-                        _currentboard.FlashlightTurnedOn = !_currentboard.FlashlightTurnedOn;
-                        Render(false);
+                        if (debugMode)
+                        {
+                            _currentboard.FlashlightTurnedOn = !_currentboard.FlashlightTurnedOn;
+                            Render(false);
+                        }
                         break;
                     case (int)ConsoleKey.R:
-                        Render();
+                        if (debugMode) Render(false);
                         break;
                     default:
                         break;

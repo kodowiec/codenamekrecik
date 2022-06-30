@@ -24,6 +24,19 @@ namespace krecikthegame
 
         static List<KeyBindingSettingsItem> keybindings = new List<KeyBindingSettingsItem>();
 
+        List<TextButton> tbs =
+            new List<TextButton>() {
+                new TextButton("przykladowy button", () => 1, 10, 10, new TextButtonStyle()
+                {
+                    BackgroundColor = ConsoleColor.Black,
+                    BackgroundColorFocused = ConsoleColor.DarkRed,
+                    TextColor = ConsoleColor.White,
+                    TextColorFocused = ConsoleColor.White,
+                    Padding = 1
+                }
+                )
+       };
+
         public static int InitSettings(ref UserSettings settings)
         {
             buttons.Clear();

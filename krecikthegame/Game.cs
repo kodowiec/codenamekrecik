@@ -11,16 +11,19 @@ namespace krecikthegame
 {
     internal partial class Game
     {
-        private object _player;
+        private Gameplay.Player _player;
         private Board _currentboard;
-        private string levelname = "level2";
+        private string levelname = "level1";
 
         public UserSettings settings;
         public SettingsManager settingsManager;
         public List<MapObject> mapObjects;
+        public List<Board> boards;
 
         private bool showHUD = true;
         private bool showInventory = true;
+        public bool debugMode = false;
+        public string lastAction = "";
 
 
         public Game() => Init();
@@ -32,14 +35,34 @@ namespace krecikthegame
             SettingsManager settingsManager = new SettingsManager(ref settings, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "UserSettings.json"));
             mapObjects = ObjectLoader.mapObjects("mapobjects.json");
 
+            boards = new List<Board>();
+            boards.Add(new Board("level1"));
+            boards.Add(new Board("level2"));
+            boards.Add(new Board("level3"));
+
             InitTriggers();
-            _currentboard = new Board(this.levelname + ".png");
+            _currentboard = boards.Find(b => b.LevelName == "level1");
+            _player = GameplayStatics.GetPlayer();
         }
 
         public void ChangeLevel(string levelname)
         {
-            this.levelname = levelname;
-            _currentboard = new Board(this.levelname + ".png");
+            if (this.levelname == "level2" && levelname == "level3" && GameplayStatics.Player.QM.CurrentQuest.Title != "Baw się")
+            {
+                return;
+            }
+            else if (this.levelname == "level2" && levelname == "level3" && GameplayStatics.Player.QM.CurrentQuest.Title == "Baw się")
+            {
+                GameplayStatics.Player.QM.CurrentQuest.SetCompleted();
+                GameplayStatics.Player.QM.UpdateState();
+            }
+                this.levelname = levelname;
+            lastAction = "";
+            _currentboard.PlayerX = _currentboard.prevPlayerX;
+            _currentboard.PlayerY = _currentboard.prevPlayerY;
+            _currentboard = boards.Find(b => b.LevelName == levelname);
+            Console.Clear();
+            if (levelname != "level3") Render(false);
         }
 
         public void Run()
@@ -51,12 +74,12 @@ namespace krecikthegame
             MainLoop();
         }
 
-        public void Update()
+        public void Update(bool partial = true)
         {
             // AI
             // other checks
             UpdateTriggers();
-            Render();
+            Render(partial);
         }
     }
 }

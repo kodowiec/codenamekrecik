@@ -45,7 +45,24 @@ namespace krecikthegame
                 KCU.ConsoleToolkit.WriteAt(KCU.Characters.whitespace.ToString(), _currentboard.prevPlayerX, _currentboard.prevPlayerY);
                 RenderWithFog();
             }
-            if (this.showHUD) UI.DrawInterface(ConsoleColor.White, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Gray, showInventory);
+            triggers.ForEach(trigger =>
+            {
+                if (levelname == trigger.levelname)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    KCU.ConsoleToolkit.WriteAt(trigger.character, trigger.x, trigger.y);
+                }
+            });
+            _currentboard.NPCs.ForEach(npc =>
+            {
+                if(npc.LevelName == levelname)
+                {
+                    Console.ForegroundColor = npc.DisplayColor;
+                    KCU.ConsoleToolkit.WriteAt(npc.DisplayCharacter, npc.x, npc.y);
+
+                }
+            });
+            if (this.showHUD) UI.DrawInterface(ConsoleColor.White, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Gray, lastAction, showInventory);
         }
 
         public void RenderWithFog()
@@ -75,20 +92,17 @@ namespace krecikthegame
                                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                                 KCU.ConsoleToolkit.WriteAt("∙", x, y);
                             }
+                            else
+                            {
+                                KCU.ConsoleToolkit.WriteAt(KCU.Characters.whitespace.ToString(), x, y);
+                            }
                             // 
                             // 
 
                         }
                     }
                 }
-                triggers.ForEach(trigger =>
-                {
-                    if (levelname == trigger.levelname)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        KCU.ConsoleToolkit.WriteAt(trigger.character, trigger.x, trigger.y);
-                    }
-                    });
+                
             }
         }
 

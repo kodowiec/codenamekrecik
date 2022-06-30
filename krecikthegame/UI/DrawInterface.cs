@@ -9,7 +9,7 @@ namespace krecikthegame
 {
     public partial class UI : IUI
     {
-        public static void DrawInterface(ConsoleColor frameColor, ConsoleColor backgroundColor, ConsoleColor plotTextColor, ConsoleColor missionText, ConsoleColor textColo, bool showInventory = true)
+        public static void DrawInterface(ConsoleColor frameColor, ConsoleColor backgroundColor, ConsoleColor plotTextColor, ConsoleColor missionText, ConsoleColor textColo, string lastaction, bool showInventory = true)
         {
             //ConsoleColor prevFG = Console.ForegroundColor;
             //ConsoleColor prevBG = Console.BackgroundColor;
@@ -54,8 +54,8 @@ namespace krecikthegame
             WriteAt("ZDROWIE:", Console.WindowWidth - 17, 0);
             Console.ForegroundColor = ConsoleColor.Red;
             WriteAt("♥ ♥ ♥", Console.WindowWidth - 8, 0);
-            Console.ForegroundColor = frameColor;
-            WriteAt("zebrales cos", 3, Console.WindowHeight - 1);
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            WriteAt(lastaction, 3, Console.WindowHeight - 1);
             //Console.ForegroundColor = plotTextColor;
             //WriteAt("Babcia: (...)", 3, Console.WindowHeight - 5);
         }

@@ -6,15 +6,20 @@ namespace Gameplay.Quests
         const int Amount = 10;
         public QuestStrawberries(Quest nextQuest) :base(nextQuest)
         {
-            Title = "Wnusiu idź nazbieraj truskawek na kompot";
+            Title = "Truskawki";
             Description = String.Format("Zbierz {0} truskawek dla babci", Amount);
+            Hint = "Wnusiu idź nazbieraj truskawek na kompot";
             Goal = Description;
         }
 
-        public override global::System.Boolean IsCompleted()
+        public override void SetCompleted()
         {
-            // TUTAJ POTRZEBNE JEST ODWOŁANIE DO GRACZA (STATYCZNA KLASA GAME???);
-            return true;
+            this.Completed = true;
+        }
+
+        public override bool IsCompleted()
+        {
+            return this.Completed;
         }
     }
 }

@@ -28,6 +28,8 @@ namespace krecikthegame
         {
             this.game = new Game();
 
+            game.debugMode = debug;
+
             menuButtons.Add(new TextButton("zagraj", () => { StartGame(); return 1; }, 5, 18, buttonStyle));
             menuButtons[0].IsFocused = true;
             menuButtons.Add(new TextButton("opcje", () => { GoToOptions(); this.Run(); return 2; }, 5, 20, buttonStyle));

@@ -32,11 +32,21 @@
                 Console.OutputEncoding = System.Text.Encoding.Unicode;
                 // TO-DO: check if properly installed;
                 string fir = KCU.Fonts.InstallFont(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "font.ttf"));
+                int retries = 0;
                 FontInstall:
                 if (fir != "Font installed successfully.")
                 {
                     if (debug) Console.WriteLine(fir);
-                    System.Threading.Thread.Sleep(500);
+                    System.Threading.Thread.Sleep(1500);
+                    retries += 1;
+                    if(retries >= 3)
+                    {
+                        System.Diagnostics.Process.Start(
+                             Environment.GetCommandLineArgs()[0],
+                             Environment.GetCommandLineArgs()[1]);
+                        Environment.Exit(0);
+
+                    }
                     goto FontInstall;
                 }
                 KCU.Fonts.ChangeFont("MxPlus IBM BIOS");
@@ -54,7 +64,7 @@
             if (fullscreen)
             {
                 short? fs = KCU.Fonts.GetFontSize();
-                if(fs.HasValue && (screenSize.Width - Console.WindowWidth * fs) > 100)
+                if(fs.HasValue && (screenSize.Height - (Console.WindowHeight * fs)) > 100)
                 {
                     System.Windows.Forms.SendKeys.SendWait("{F11}");
                 }

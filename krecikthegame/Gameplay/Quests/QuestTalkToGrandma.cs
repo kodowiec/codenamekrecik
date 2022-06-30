@@ -1,13 +1,13 @@
 ﻿using System;
 namespace Gameplay.Quests
 {
-    class QuestLabyrinth : Quest
+    class QuestTalkToGrandma : Quest
     {
-        public QuestLabyrinth(Quest nextQuest) :base(nextQuest)
+        public QuestTalkToGrandma(Quest nextQuest) : base(nextQuest)
         {
-            Title = "Labirynt";
-            Description = "Znajdź drogę do wyjścia.";
-            Hint = "Przedostań się przez ciemny labirynt";
+            Title = "Rozmowa";
+            Description = "Porozmawiaj z babcią";
+            Hint = "Jesteś głodny! Znajdź babcię i jej o tym powiedz!";
             Goal = Description;
         }
 
