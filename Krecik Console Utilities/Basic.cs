@@ -79,5 +79,10 @@ namespace KCU
             Console.Write(sb.ToString());
         }
 
+        /// <summary>
+        /// Alias for System.Threading.Thread.Sleep
+        /// </summary>
+        /// <param name="milliseconds">milliseconds to sleep</param>
+        public static void Sleep(int milliseconds) => System.Threading.Thread.Sleep(milliseconds);
     }
 }
