@@ -42,14 +42,10 @@ namespace krecikthegame
 
         public void Run()
         {
-            Render(false);
+            
             Gameplay.GameplayStatics.InitPlayer();
             Gameplay.GameplayStatics.Game = this;
-            // TODO REMOVE THIS SECTION
-            Gameplay.GameplayStatics.GetPlayer().EQ.AddItem(new Strawberry());
-            Gameplay.GameplayStatics.GetPlayer().EQ.AddItem(new Key());
-            Gameplay.GameplayStatics.GetPlayer().EQ.AddItem(new Strawberry());
-            //
+            Render(false);
             MainLoop();
         }
 
