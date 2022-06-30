@@ -38,7 +38,6 @@ namespace krecikthegame
                 Console.Clear();
                 if(!_currentboard.IsFogHere) FullRender();
                 RenderWithFog();
-                return;
             }
             else
             {
