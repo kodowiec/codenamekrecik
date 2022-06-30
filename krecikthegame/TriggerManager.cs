@@ -15,6 +15,7 @@ namespace krecikthegame
         {
             triggers = new List<Trigger>();
             triggers.Add(new ChangeLevelTrigger("level2", 55, 10, "level3"));
+            triggers.Add(new EndScreenTrigger("level3", 44, 7));
         }
 
         public void UpdateTriggers()
