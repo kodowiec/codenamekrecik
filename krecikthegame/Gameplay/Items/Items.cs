@@ -1,4 +1,4 @@
-﻿namespace Gameplay
+﻿namespace Gameplay.Items
 {
     enum ItemType
     {
@@ -17,6 +17,8 @@
         public ItemType Type;
         public string Name;
         public string Description;
+        public bool Stackable = false;
+        public int Count = 1;
 
 
         public bool Equals(Item? other)
@@ -42,26 +44,5 @@
             // TUTAJ POTRZEBNE JEST ODWOŁANIE DO GRACZA (STATYCZNA KLASA GAME???) Game.GetPlayer().Wear(this);
         }
     }
-
-    // ITEMS
-
-    // EXAMPLE ////////////////////////////
-    class RedPotion: UsableItem
-    {
-        float HP = 30.0f;
-
-        public RedPotion() 
-        {
-            Type = ItemType.RED_POTION;
-            Name = "Red Potion";
-            Description = "Restores some HP points";
-        }
-
-        public override void Use() 
-        {
-            Console.WriteLine("+30hp");
-        }
-    }
-
-    
+ 
 }

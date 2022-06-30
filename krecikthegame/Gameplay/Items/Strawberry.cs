@@ -1,4 +1,4 @@
-﻿namespace Gameplay
+﻿namespace Gameplay.Items
 {
     class Strawberry : Item
     {
@@ -7,6 +7,7 @@
             Type = ItemType.STRAWBERRY;
             Name = "Truskawka";
             Description = "???";
+            Stackable = true;
         }
     }
 }

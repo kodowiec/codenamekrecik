@@ -1,4 +1,4 @@
-﻿namespace Gameplay
+﻿namespace Gameplay.Items
 {
     class KeyFragment : Item
     {
