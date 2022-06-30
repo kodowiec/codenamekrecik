@@ -15,9 +15,14 @@ namespace krecikthegame
             //ConsoleColor prevBG = Console.BackgroundColor;
             Console.BackgroundColor = backgroundColor;
             //Console.Clear();
+            if(showInventory)
+                ClearRectangle(16, 13, Console.WindowWidth - 17, Console.WindowHeight - 14);
             DrawFrame(Console.WindowWidth - 2, Console.WindowHeight - 2, frameColor, backgroundColor, 1, 1);
             Console.ForegroundColor = frameColor;
             //Console.BackgroundColor = prevBG;
+            if (showInventory)
+            {
+            
             WriteAt("╔", Console.WindowWidth - 17, Console.WindowHeight - 14);
             WriteAt("═", Console.WindowWidth - 14, Console.WindowHeight - 14);
             WriteAt("═", Console.WindowWidth - 13, Console.WindowHeight - 14);
@@ -35,18 +40,19 @@ namespace krecikthegame
             WriteAt("PLECAK", Console.WindowWidth - 12, Console.WindowHeight - 12);
             Console.ForegroundColor = frameColor;
             Gameplay.Equipment EQ = Gameplay.GameplayStatics.GetPlayer().EQ;
-            for(int i = 0; i < 7; i++)
+            for (int i = 0; i < 7; i++)
             {
                 string text = "#";
-                if(EQ.Count > i)
+                if (EQ.Count > i)
                 {
                     Item item = EQ.GetAt(i);
                     text = item.Name;
                     if (item.Stackable)
-                        text += String.Format(" x{0}", item.Count);
+                        text += String.Format("x{0}", item.Count);
                 }
-                WriteAt(String.Format("{0}.{1}", i+1, text), Console.WindowWidth - 16, Console.WindowHeight - 10 + i);
+                WriteAt(String.Format("{0}.{1}", i + 1, text), Console.WindowWidth - 16, Console.WindowHeight - 10 + i);
             }
+        }
             Console.ForegroundColor = missionText;
             WriteAt("AKTUALNY CEL MISJI:", 3, 0);
             WriteAt(Gameplay.GameplayStatics.GetCurrentQuest().Goal, 23, 0);
