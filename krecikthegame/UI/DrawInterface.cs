@@ -51,13 +51,13 @@ namespace krecikthegame
             WriteAt("AKTUALNY CEL MISJI:", 3, 0);
             WriteAt(Gameplay.GameplayStatics.GetCurrentQuest().Goal, 23, 0);
             Console.ForegroundColor = frameColor;
-            WriteAt("ZDROWIE:", Console.WindowWidth - 17, 3);
+            WriteAt("ZDROWIE:", Console.WindowWidth - 17, 0);
             Console.ForegroundColor = ConsoleColor.Red;
-            WriteAt("♥ ♥ ♥", Console.WindowWidth - 8, 3);
+            WriteAt("♥ ♥ ♥", Console.WindowWidth - 8, 0);
             Console.ForegroundColor = frameColor;
-            WriteAt("zebrales cos", 3, Console.WindowHeight - 4);
-            Console.ForegroundColor = plotTextColor;
-            WriteAt("Babcia: (...)", 3, Console.WindowHeight - 5);
+            WriteAt("zebrales cos", 3, Console.WindowHeight - 1);
+            //Console.ForegroundColor = plotTextColor;
+            //WriteAt("Babcia: (...)", 3, Console.WindowHeight - 5);
         }
     }
 }
