@@ -79,6 +79,32 @@ namespace KCU
             Console.Write(sb.ToString());
         }
 
+        /// Write some empty rectangle (aka clear the space)
+        /// </summary>
+        /// <param name="width">length of whitespaces</param>
+        /// <param name="height">length of whitespaces</param>
+        /// <param name="left">consoel left starting point</param>
+        /// <param name="top">console top starting point</param>
+        public static void ClearRectangle(int width, int height, int left = -1, int top = -1, bool goback = false)
+        {
+            int prevleft = Console.CursorLeft;
+            int prevtop = Console.CursorTop;
+            int x = (left > 0) ? left : Console.CursorLeft, y = (top > 0) ? top : Console.CursorTop;
+            Console.SetCursorPosition(x, y);
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Characters.whitespace, width);
+            for (int i = 0; i < height; i++)
+            {
+                Console.SetCursorPosition(x, y + i);
+                Console.Write(sb.ToString());
+            }
+            if (goback)
+            {
+                Console.CursorLeft = prevleft;
+                Console.CursorTop = prevtop;
+            }
+        }
+
         /// <summary>
         /// Alias for System.Threading.Thread.Sleep
         /// </summary>
