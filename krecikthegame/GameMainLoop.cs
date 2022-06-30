@@ -158,6 +158,24 @@ namespace krecikthegame
                     case (int)ConsoleKey.R:
                         if (debugMode) Render(false);
                         break;
+                    case (int)ConsoleKey.Escape:
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.SetCursorPosition(0, 0);
+                        KCU.ConsoleToolkit.WriteAt(
+                            "Czy chcesz opuścić grę?", 
+                            (Console.WindowWidth / 2) - ("Czy chcesz opuścić grę?".Length / 2),
+                            Console.WindowHeight / 2);
+                        KCU.ConsoleToolkit.WriteAt("ESC - opuść | dowolny inny klawisz wraca do gry", (Console.WindowWidth / 2) - ("ESC - opuść | dowolny inny klawisz wraca do gry").Length / 2, Console.WindowHeight - 2, ConsoleColor.DarkGray);
+                        if(Console.ReadKey().Key == ConsoleKey.Escape)
+                        {
+                            Environment.Exit(0);
+                        }
+                        else
+                        {
+                            Render(false);
+                        }
+                        break;
                     default:
                         break;
                 }

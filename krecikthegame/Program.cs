@@ -41,9 +41,7 @@
                     retries += 1;
                     if(retries >= 3)
                     {
-                        System.Diagnostics.Process.Start(
-                             Environment.GetCommandLineArgs()[0],
-                             Environment.GetCommandLineArgs()[1]);
+                        System.Windows.Forms.MessageBox.Show("Wystąpił błąd przy inicjalizacji. Spróbuj jeszcze raz");
                         Environment.Exit(0);
 
                     }

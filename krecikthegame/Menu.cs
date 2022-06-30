@@ -42,6 +42,8 @@ namespace krecikthegame
                 debugmbtn.style.BackgroundColorFocused = ConsoleColor.DarkYellow;   
                 menuButtons.Add(debugmbtn);
             }
+
+            Console.CursorVisible = false;
         }
 
         public void ShowDebug() => Program.ShowDebugMenu();
