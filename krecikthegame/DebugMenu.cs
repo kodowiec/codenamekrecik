@@ -57,6 +57,11 @@ namespace krecikthegame
                     Console.ReadKey();
                     goto DebugMain;
                     break;
+                case ConsoleKey.D:
+
+                    UI.DrawDialogue("title", "BODY", ConsoleColor.White, ConsoleColor.White);
+                    Console.ReadKey();
+                    break;
                 case ConsoleKey.X:
                     Console.Write("Podaj rozmiar: ");
                     short a;
