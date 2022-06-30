@@ -61,7 +61,6 @@ namespace krecikthegame
                     {
                         RenderPlayer();
                     }
-
                     else if (x < _currentboard.Width && y < _currentboard.Height && x >= 0 && y>= 0)
                     {
                         if (_currentboard.BoardObjects[x, y] != null)
@@ -82,8 +81,15 @@ namespace krecikthegame
 
                         }
                     }
-
                 }
+                triggers.ForEach(trigger =>
+                {
+                    if (levelname == trigger.levelname)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        KCU.ConsoleToolkit.WriteAt("#", trigger.x, trigger.y);
+                    }
+                    });
             }
         }
 

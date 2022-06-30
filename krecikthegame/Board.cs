@@ -1,4 +1,5 @@
-﻿using krecikthegame.Models;
+﻿using Gameplay;
+using krecikthegame.Models;
 using System.Collections.Generic;
 
 namespace krecikthegame
@@ -8,6 +9,7 @@ namespace krecikthegame
         public MapObject[,] BoardObjects;
         public List<GameAction> Actions;
         public MapReader reader;
+        public string LevelName;
 
         public bool IsFogHere = false;
         public bool FlashlightTurnedOn = false;
@@ -22,6 +24,8 @@ namespace krecikthegame
 
         public Board(string levelname)
         {
+            Console.Clear();
+            LevelName = levelname;
             reader = new MapReader();
             reader.ReadFile(levelname);
             this.BoardObjects = reader.mo;

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using krecikthegame.Models;
+using Gameplay.Items;
+using Gameplay;
 
 namespace krecikthegame
 {
@@ -28,12 +30,26 @@ namespace krecikthegame
             SettingsManager settingsManager = new SettingsManager(ref settings, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "UserSettings.json"));
             mapObjects = ObjectLoader.mapObjects("mapobjects.json");
 
+            InitTriggers();
+            _currentboard = new Board(this.levelname + ".png");
+        }
+
+        public void ChangeLevel(string levelname)
+        {
+            this.levelname = levelname;
             _currentboard = new Board(this.levelname + ".png");
         }
 
         public void Run()
         {
             Render(false);
+            Gameplay.GameplayStatics.InitPlayer();
+            Gameplay.GameplayStatics.Game = this;
+            // TODO REMOVE THIS SECTION
+            Gameplay.GameplayStatics.GetPlayer().EQ.AddItem(new Strawberry());
+            Gameplay.GameplayStatics.GetPlayer().EQ.AddItem(new Key());
+            Gameplay.GameplayStatics.GetPlayer().EQ.AddItem(new Strawberry());
+            //
             MainLoop();
         }
 
@@ -41,6 +57,7 @@ namespace krecikthegame
         {
             // AI
             // other checks
+            UpdateTriggers();
             Render();
         }
     }

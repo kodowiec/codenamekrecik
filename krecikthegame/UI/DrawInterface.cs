@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gameplay.Items;
 using static KCU.ConsoleToolkit;
 namespace krecikthegame
 {
@@ -29,16 +30,22 @@ namespace krecikthegame
             Console.ForegroundColor = missionText;
             WriteAt("PLECAK", Console.WindowWidth - 10, Console.WindowHeight - 12);
             Console.ForegroundColor = frameColor;
-            WriteAt("1.#", Console.WindowWidth - 12, Console.WindowHeight - 10);
-            WriteAt("2.#", Console.WindowWidth - 12, Console.WindowHeight - 9);
-            WriteAt("3.#", Console.WindowWidth - 12, Console.WindowHeight - 8);
-            WriteAt("4.#", Console.WindowWidth - 12, Console.WindowHeight - 7);
-            WriteAt("5.#", Console.WindowWidth - 12, Console.WindowHeight - 6);
-            WriteAt("6.#", Console.WindowWidth - 12, Console.WindowHeight - 5);
-            WriteAt("7.#", Console.WindowWidth - 12, Console.WindowHeight - 4);
+            Gameplay.Equipment EQ = Gameplay.GameplayStatics.GetPlayer().EQ;
+            for(int i = 0; i < 7; i++)
+            {
+                string text = "#";
+                if(EQ.Count > i)
+                {
+                    Item item = EQ.GetAt(i);
+                    text = item.Name;
+                    if (item.Stackable)
+                        text += String.Format(" x{0}", item.Count);
+                }
+                WriteAt(String.Format("{0}. {1}", i+1, text), Console.WindowWidth - 12, Console.WindowHeight - 10 + i);
+            }
             Console.ForegroundColor = missionText;
             WriteAt("AKTUALNY CEL MISJI:", 3, 0);
-            WriteAt("#", 23, 0);
+            WriteAt(Gameplay.GameplayStatics.GetCurrentQuest().Goal, 23, 0);
             Console.ForegroundColor = frameColor;
             WriteAt("ZDROWIE:", Console.WindowWidth - 17, 3);
             Console.ForegroundColor = ConsoleColor.Red;
