@@ -178,5 +178,14 @@
     "IsInteractive": false,
     "IsColliding": true,
     "DrawColor": 10
+  },
+  {
+    "ID": 21,
+    "ColorID": "#402525",
+    "Name": "granica",
+    "Display": ";",
+    "IsInteractive": false,
+    "IsColliding": true,
+    "DrawColor": 0
   }
 ]
