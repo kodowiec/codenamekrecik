@@ -51,7 +51,11 @@ namespace krecikthegame
             MainMenuLoop();
         }
 
-        private void StartGame() => game.Run();
+        private void StartGame()
+        {
+            HowToPlayScreen.Show(ref this.game.settings);
+            game.Run();
+        }
 
         private void GoToOptions()
         {
