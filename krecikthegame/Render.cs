@@ -62,7 +62,7 @@ namespace krecikthegame
 
                 }
             });
-            if (this.showHUD) UI.DrawInterface(ConsoleColor.White, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Gray, lastAction, showInventory);
+            if (this.showHUD) UI.DrawInterface(ConsoleColor.White, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Gray, lastAction, showInventory, partial);
         }
 
         public void RenderWithFog()

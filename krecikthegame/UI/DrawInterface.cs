@@ -9,15 +9,14 @@ namespace krecikthegame
 {
     public partial class UI : IUI
     {
-        public static void DrawInterface(ConsoleColor frameColor, ConsoleColor backgroundColor, ConsoleColor plotTextColor, ConsoleColor missionText, ConsoleColor textColo, string lastaction, bool showInventory = true)
+        public static void DrawInterface(ConsoleColor frameColor, ConsoleColor backgroundColor, ConsoleColor plotTextColor, ConsoleColor missionText, ConsoleColor textColo, string lastaction, bool showInventory = true, bool partial = true)
         {
             //ConsoleColor prevFG = Console.ForegroundColor;
             //ConsoleColor prevBG = Console.BackgroundColor;
             Console.BackgroundColor = backgroundColor;
             //Console.Clear();
-            if(showInventory)
+            if(showInventory && !partial)
                 ClearRectangle(16, 13, Console.WindowWidth - 17, Console.WindowHeight - 14);
-            DrawFrame(Console.WindowWidth - 2, Console.WindowHeight - 2, frameColor, backgroundColor, 1, 1);
             Console.ForegroundColor = frameColor;
             //Console.BackgroundColor = prevBG;
             if (showInventory)
@@ -42,7 +41,7 @@ namespace krecikthegame
             Gameplay.Equipment EQ = Gameplay.GameplayStatics.GetPlayer().EQ;
             for (int i = 0; i < 7; i++)
             {
-                string text = "#";
+                string text = "";
                 if (EQ.Count > i)
                 {
                     Item item = EQ.GetAt(i);
@@ -50,7 +49,7 @@ namespace krecikthegame
                     if (item.Stackable)
                         text += String.Format("x{0}", item.Count);
                 }
-                WriteAt(String.Format("{0}.{1}", i + 1, text), Console.WindowWidth - 16, Console.WindowHeight - 10 + i);
+                WriteAt(String.Format("{0}.{1} ", i + 1, text), Console.WindowWidth - 16, Console.WindowHeight - 10 + i);
             }
         }
             Console.ForegroundColor = missionText;
@@ -62,6 +61,8 @@ namespace krecikthegame
             WriteAt("♥ ♥ ♥", Console.WindowWidth - 8, 0);
             Console.ForegroundColor = ConsoleColor.DarkGray;
             WriteAt(lastaction, 3, Console.WindowHeight - 1);
+            DrawFrame(Console.WindowWidth - 2, Console.WindowHeight - 2, frameColor, backgroundColor, 1, 1);
+            Console.ForegroundColor = ConsoleColor.Black;
             //Console.ForegroundColor = plotTextColor;
             //WriteAt("Babcia: (...)", 3, Console.WindowHeight - 5);
         }
