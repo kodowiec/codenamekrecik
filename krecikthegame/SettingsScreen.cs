@@ -34,7 +34,7 @@ namespace krecikthegame
             keybindings.Clear();
             foreach (KeyboardSettings i in Enum.GetValues(typeof(KeyboardSettings)))
             {
-                if (i == KeyboardSettings.Interact || i == KeyboardSettings.Attack) continue;
+                if (i == KeyboardSettings.Attack) continue;
                 KeyBindingSettingsItem setting = new KeyBindingSettingsItem((ConsoleKey)settings.keymappings[i], settings.keymappings.GetDescription(i), 27, 10 + (keybindings.Count * 2), 39);
                 keybindings.Add(setting);
             }
