@@ -20,7 +20,9 @@ namespace krecikthegame
         public List<MapObject> mapObjects;
 
         private bool showHUD = true;
- 
+        private bool showInventory = true;
+
+
         public Game() => Init();
         
 

@@ -45,7 +45,7 @@ namespace krecikthegame
                 KCU.ConsoleToolkit.WriteAt(KCU.Characters.whitespace.ToString(), _currentboard.prevPlayerX, _currentboard.prevPlayerY);
                 RenderWithFog();
             }
-            if (this.showHUD) UI.DrawInterface(ConsoleColor.White, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Gray);
+            if (this.showHUD) UI.DrawInterface(ConsoleColor.White, ConsoleColor.Black, ConsoleColor.Green, ConsoleColor.Yellow, ConsoleColor.Gray, showInventory);
         }
 
         public void RenderWithFog()

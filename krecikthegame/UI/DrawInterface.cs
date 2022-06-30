@@ -8,8 +8,8 @@ using static KCU.ConsoleToolkit;
 namespace krecikthegame
 {
     public partial class UI : IUI
-    { 
-    public static void DrawInterface(ConsoleColor frameColor, ConsoleColor backgroundColor, ConsoleColor plotTextColor, ConsoleColor missionText, ConsoleColor textColo)
+    {
+        public static void DrawInterface(ConsoleColor frameColor, ConsoleColor backgroundColor, ConsoleColor plotTextColor, ConsoleColor missionText, ConsoleColor textColo, bool showInventory = true)
         {
             //ConsoleColor prevFG = Console.ForegroundColor;
             //ConsoleColor prevBG = Console.BackgroundColor;

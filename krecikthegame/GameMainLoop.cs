@@ -92,6 +92,12 @@ namespace krecikthegame
                         this.showHUD =! this.showHUD;
                         Render(false);
                         break;
+                    case var value when value == settings.keymappings.Inventory:
+                        // player->move right
+                        this.showInventory = !this.showInventory;
+                        Render(false);
+                        break;
+
                     case (int)ConsoleKey.M:
                         MagicZappingTest();
                         break;
